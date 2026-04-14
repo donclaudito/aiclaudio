@@ -1,0 +1,36 @@
+{
+  "name": "AIQuery",
+  "type": "object",
+  "properties": {
+    "question": {
+      "type": "string",
+      "description": "The question asked"
+    },
+    "answer": {
+      "type": "string",
+      "description": "The AI-generated answer"
+    },
+    "model_used": {
+      "type": "string"
+    },
+    "use_internet": {
+      "type": "boolean",
+      "default": false
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "completed",
+        "error"
+      ],
+      "default": "pending"
+    },
+    "tokens_used": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "question"
+  ]
+}

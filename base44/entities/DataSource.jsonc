@@ -1,0 +1,54 @@
+{
+  "name": "DataSource",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the data source"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "arxiv",
+        "pubmed",
+        "nasa",
+        "web",
+        "manual",
+        "other"
+      ],
+      "description": "Type of source"
+    },
+    "url": {
+      "type": "string",
+      "description": "Base URL of the source"
+    },
+    "query": {
+      "type": "string",
+      "description": "Search query used for this source"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive",
+        "error"
+      ],
+      "default": "active"
+    },
+    "last_fetched": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "documents_count": {
+      "type": "number",
+      "default": 0
+    },
+    "description": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "type"
+  ]
+}
