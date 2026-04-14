@@ -52,16 +52,16 @@ export default function ActivityLogs() {
     <div className="p-6 md:p-8 space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-space text-2xl font-bold">Activity Logs</h1>
-          <p className="text-sm text-muted-foreground mt-0.5">{logs.length} total events</p>
+          <h1 className="font-space text-2xl font-bold">Log de Atividades</h1>
+          <p className="text-sm text-muted-foreground mt-0.5">{logs.length} eventos no total</p>
         </div>
         <div className="flex gap-2">
           <Button variant="outline" size="sm" className="gap-2" onClick={load}>
-            <RefreshCw className="w-3.5 h-3.5" /> Refresh
+            <RefreshCw className="w-3.5 h-3.5" /> Atualizar
           </Button>
           {logs.length > 0 && (
             <Button variant="outline" size="sm" className="gap-2 text-destructive hover:text-destructive" onClick={handleClearAll}>
-              <Trash2 className="w-3.5 h-3.5" /> Clear All
+              <Trash2 className="w-3.5 h-3.5" /> Limpar Tudo
             </Button>
           )}
         </div>
@@ -89,15 +89,15 @@ export default function ActivityLogs() {
       <div className="flex flex-col sm:flex-row gap-3">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-          <Input className="pl-9" placeholder="Search logs..." value={search} onChange={e => setSearch(e.target.value)} />
+          <Input className="pl-9" placeholder="Buscar logs..." value={search} onChange={e => setSearch(e.target.value)} />
         </div>
         <Select value={filterStatus} onValueChange={setFilterStatus}>
           <SelectTrigger className="w-40"><SelectValue /></SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">All Status</SelectItem>
-            <SelectItem value="success">Success</SelectItem>
-            <SelectItem value="error">Error</SelectItem>
-            <SelectItem value="warning">Warning</SelectItem>
+            <SelectItem value="all">Todos os Status</SelectItem>
+            <SelectItem value="success">Sucesso</SelectItem>
+            <SelectItem value="error">Erro</SelectItem>
+            <SelectItem value="warning">Aviso</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -110,7 +110,7 @@ export default function ActivityLogs() {
       ) : filtered.length === 0 ? (
         <div className="text-center py-16 text-muted-foreground">
           <ScrollText className="w-10 h-10 mx-auto mb-3 opacity-30" />
-          <p className="font-medium">No logs found</p>
+          <p className="font-medium">Nenhum log encontrado</p>
         </div>
       ) : (
         <div className="space-y-1.5">

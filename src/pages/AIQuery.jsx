@@ -9,11 +9,11 @@ import { format } from "date-fns";
 import ReactMarkdown from "react-markdown";
 
 const SUGGESTED = [
-  "What is the current scientific consensus on antigravity research?",
-  "Explain the Podkletnov effect and its experimental results",
-  "What are the main theoretical frameworks for gravitational shielding?",
-  "Summarize recent NASA research on advanced propulsion systems",
-  "What quantum gravity theories could explain antigravity phenomena?",
+  "Qual é o consenso científico atual sobre pesquisa em antigravidade?",
+  "Explique o efeito Podkletnov e seus resultados experimentais",
+  "Quais são os principais frameworks teóricos para blindagem gravitacional?",
+  "Resuma as pesquisas recentes da NASA sobre sistemas de propulsão avançada",
+  "Quais teorias de gravidade quântica podem explicar fenômenos de antigravidade?",
 ];
 
 export default function AIQuery() {
@@ -90,13 +90,13 @@ Question: ${q}`;
         <div className="flex items-center justify-between">
           <div>
             <h1 className="font-space text-2xl font-bold flex items-center gap-2">
-              <BrainCircuit className="w-6 h-6 text-primary" /> AI Query
+              <BrainCircuit className="w-6 h-6 text-primary" /> Consulta IA
             </h1>
-            <p className="text-sm text-muted-foreground mt-0.5">Ask anything about antigravity research</p>
+            <p className="text-sm text-muted-foreground mt-0.5">Pergunte qualquer coisa sobre pesquisa em antigravidade</p>
           </div>
           <div className="flex items-center gap-2">
             <Globe className={`w-4 h-4 ${useInternet ? "text-primary" : "text-muted-foreground"}`} />
-            <Label className="text-sm">Web context</Label>
+            <Label className="text-sm">Contexto web</Label>
             <Switch checked={useInternet} onCheckedChange={setUseInternet} />
           </div>
         </div>
@@ -107,8 +107,8 @@ Question: ${q}`;
         {history.length === 0 && !loading && (
           <div className="text-center py-10">
             <Sparkles className="w-10 h-10 mx-auto mb-4 text-primary/40" />
-            <p className="font-medium text-muted-foreground">Start exploring antigravity research</p>
-            <p className="text-sm text-muted-foreground mt-1 mb-6">Ask a question or choose a suggestion below</p>
+            <p className="font-medium text-muted-foreground">Comece a explorar a pesquisa em antigravidade</p>
+            <p className="text-sm text-muted-foreground mt-1 mb-6">Faça uma pergunta ou escolha uma sugestão abaixo</p>
             <div className="grid grid-cols-1 gap-2 max-w-lg mx-auto">
               {SUGGESTED.map((s) => (
                 <button key={s} className="text-left text-sm p-3 rounded-lg border border-border hover:border-primary/40 hover:bg-accent/50 transition-colors"
@@ -139,7 +139,7 @@ Question: ${q}`;
                       <span className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
                       <span className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
                     </div>
-                    <span className="text-sm">Thinking...</span>
+                    <span className="text-sm">Pensando...</span>
                   </div>
                 ) : (
                   <>
@@ -179,7 +179,7 @@ Question: ${q}`;
         <div className="flex gap-3 max-w-4xl mx-auto">
           <Textarea
             className="flex-1 resize-none min-h-[48px] max-h-32"
-            placeholder="Ask about antigravity research..."
+            placeholder="Pergunte sobre pesquisa em antigravidade..."
             value={question}
             onChange={e => setQuestion(e.target.value)}
             onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleSubmit(); } }}
@@ -189,7 +189,7 @@ Question: ${q}`;
             <Send className="w-4 h-4" />
           </Button>
         </div>
-        <p className="text-xs text-muted-foreground text-center mt-2">Press Enter to send · Shift+Enter for new line</p>
+        <p className="text-xs text-muted-foreground text-center mt-2">Enter para enviar · Shift+Enter para nova linha</p>
       </div>
     </div>
   );

@@ -28,7 +28,7 @@ export default function Dashboard() {
 
   const stats = [
     {
-      label: "Documents",
+      label: "Documentos",
       value: loading ? "—" : docs.length,
       icon: FileText,
       color: "text-primary",
@@ -36,7 +36,7 @@ export default function Dashboard() {
       link: "/documents",
     },
     {
-      label: "Active Sources",
+      label: "Fontes Ativas",
       value: loading ? "—" : sources.filter(s => s.status === "active").length,
       icon: Database,
       color: "text-emerald-600",
@@ -44,7 +44,7 @@ export default function Dashboard() {
       link: "/sources",
     },
     {
-      label: "AI Queries",
+      label: "Consultas IA",
       value: loading ? "—" : queries.length,
       icon: BrainCircuit,
       color: "text-violet-600",
@@ -52,7 +52,7 @@ export default function Dashboard() {
       link: "/ai-query",
     },
     {
-      label: "Pending Review",
+      label: "Aguardando Revisão",
       value: loading ? "—" : docs.filter(d => d.status === "pending").length,
       icon: Clock,
       color: "text-amber-600",
@@ -71,8 +71,8 @@ export default function Dashboard() {
     <div className="p-6 md:p-8 space-y-8">
       {/* Header */}
       <div>
-        <h1 className="font-space text-2xl font-bold text-foreground">Research Hub</h1>
-        <p className="text-muted-foreground text-sm mt-1">Antigravity research data management & AI interface</p>
+        <h1 className="font-space text-2xl font-bold text-foreground">Hub de Pesquisa</h1>
+        <p className="text-muted-foreground text-sm mt-1">Gestão de dados e interface de IA para pesquisa em antigravidade</p>
       </div>
 
       {/* Stats */}
@@ -97,9 +97,9 @@ export default function Dashboard() {
         {/* Recent Documents */}
         <div className="bg-card rounded-xl border border-border p-6">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="font-space font-semibold text-foreground">Recent Documents</h2>
+            <h2 className="font-space font-semibold text-foreground">Documentos Recentes</h2>
             <Link to="/documents" className="text-xs text-primary hover:underline flex items-center gap-1">
-              View all <ArrowRight className="w-3 h-3" />
+              Ver todos <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
           {loading ? (
@@ -109,7 +109,7 @@ export default function Dashboard() {
               ))}
             </div>
           ) : docs.length === 0 ? (
-            <p className="text-sm text-muted-foreground text-center py-8">No documents yet. <Link to="/documents" className="text-primary hover:underline">Add one</Link></p>
+            <p className="text-sm text-muted-foreground text-center py-8">Nenhum documento ainda. <Link to="/documents" className="text-primary hover:underline">Adicionar</Link></p>
           ) : (
             <div className="space-y-2">
               {docs.map((doc) => (
@@ -135,9 +135,9 @@ export default function Dashboard() {
         {/* Activity Log */}
         <div className="bg-card rounded-xl border border-border p-6">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="font-space font-semibold text-foreground">Activity Log</h2>
+            <h2 className="font-space font-semibold text-foreground">Log de Atividades</h2>
             <Link to="/logs" className="text-xs text-primary hover:underline flex items-center gap-1">
-              View all <ArrowRight className="w-3 h-3" />
+              Ver todos <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
           {loading ? (
@@ -147,7 +147,7 @@ export default function Dashboard() {
               ))}
             </div>
           ) : logs.length === 0 ? (
-            <p className="text-sm text-muted-foreground text-center py-8">No activity yet.</p>
+            <p className="text-sm text-muted-foreground text-center py-8">Nenhuma atividade ainda.</p>
           ) : (
             <div className="space-y-2">
               {logs.map((log) => (
@@ -170,9 +170,9 @@ export default function Dashboard() {
       {/* Sources Status */}
       <div className="bg-card rounded-xl border border-border p-6">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="font-space font-semibold text-foreground">Data Sources Status</h2>
+          <h2 className="font-space font-semibold text-foreground">Status das Fontes de Dados</h2>
           <Link to="/sources" className="text-xs text-primary hover:underline flex items-center gap-1">
-            Manage <ArrowRight className="w-3 h-3" />
+            Gerenciar <ArrowRight className="w-3 h-3" />
           </Link>
         </div>
         {loading ? (
@@ -180,7 +180,7 @@ export default function Dashboard() {
             {[1, 2, 3, 4].map(i => <div key={i} className="h-16 bg-muted rounded-lg animate-pulse" />)}
           </div>
         ) : sources.length === 0 ? (
-          <p className="text-sm text-muted-foreground text-center py-8">No sources configured. <Link to="/sources" className="text-primary hover:underline">Add one</Link></p>
+          <p className="text-sm text-muted-foreground text-center py-8">Nenhuma fonte configurada. <Link to="/sources" className="text-primary hover:underline">Adicionar</Link></p>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
             {sources.map((src) => (

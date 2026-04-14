@@ -69,11 +69,11 @@ export default function Sources() {
     <div className="p-6 md:p-8 space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-space text-2xl font-bold">Data Sources</h1>
-          <p className="text-sm text-muted-foreground mt-0.5">{activeCount} active of {sources.length} sources</p>
+          <h1 className="font-space text-2xl font-bold">Fontes de Dados</h1>
+          <p className="text-sm text-muted-foreground mt-0.5">{activeCount} ativas de {sources.length} fontes</p>
         </div>
         <Button onClick={() => setShowForm(true)} className="gap-2">
-          <Plus className="w-4 h-4" /> Add Source
+          <Plus className="w-4 h-4" /> Adicionar Fonte
         </Button>
       </div>
 
@@ -84,8 +84,8 @@ export default function Sources() {
       ) : sources.length === 0 ? (
         <div className="text-center py-16 text-muted-foreground">
           <Database className="w-10 h-10 mx-auto mb-3 opacity-30" />
-          <p className="font-medium">No data sources yet</p>
-          <p className="text-sm mt-1">Configure your research data sources</p>
+          <p className="font-medium">Nenhuma fonte de dados ainda</p>
+          <p className="text-sm mt-1">Configure suas fontes de dados de pesquisa</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -122,7 +122,7 @@ export default function Sources() {
                   </div>
                   <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                     <Button size="sm" variant="ghost" className="h-7 text-xs gap-1" onClick={() => toggleStatus(src)}>
-                      {src.status === "active" ? <><Pause className="w-3 h-3" /> Pause</> : <><RefreshCw className="w-3 h-3" /> Activate</>}
+                      {src.status === "active" ? <><Pause className="w-3 h-3" /> Pausar</> : <><RefreshCw className="w-3 h-3" /> Ativar</>}
                     </Button>
                     <Button size="sm" variant="ghost" className="h-7 text-xs text-destructive hover:text-destructive" onClick={() => handleDelete(src)}>
                       <Trash2 className="w-3 h-3" />
@@ -138,15 +138,15 @@ export default function Sources() {
       <Dialog open={showForm} onOpenChange={setShowForm}>
         <DialogContent className="max-w-md">
           <DialogHeader>
-            <DialogTitle className="font-space">Add Data Source</DialogTitle>
+            <DialogTitle className="font-space">Adicionar Fonte de Dados</DialogTitle>
           </DialogHeader>
           <div className="space-y-4 pt-2">
             <div>
-              <Label>Name *</Label>
-              <Input className="mt-1" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} placeholder="e.g. arXiv Antigravity Papers" />
+              <Label>Nome *</Label>
+              <Input className="mt-1" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} placeholder="ex: arXiv Artigos de Antigravidade" />
             </div>
             <div>
-              <Label>Type</Label>
+              <Label>Tipo</Label>
               <Select value={form.type} onValueChange={v => setForm(f => ({ ...f, type: v }))}>
                 <SelectTrigger className="mt-1"><SelectValue /></SelectTrigger>
                 <SelectContent>
@@ -160,21 +160,21 @@ export default function Sources() {
               </Select>
             </div>
             <div>
-              <Label>Base URL</Label>
+              <Label>URL Base</Label>
               <Input className="mt-1" value={form.url} onChange={e => setForm(f => ({ ...f, url: e.target.value }))} placeholder="https://..." />
             </div>
             <div>
-              <Label>Search Query</Label>
-              <Input className="mt-1" value={form.query} onChange={e => setForm(f => ({ ...f, query: e.target.value }))} placeholder="e.g. antigravity propulsion" />
+              <Label>Query de Busca</Label>
+              <Input className="mt-1" value={form.query} onChange={e => setForm(f => ({ ...f, query: e.target.value }))} placeholder="ex: antigravidade propulsão" />
             </div>
             <div>
-              <Label>Description</Label>
+              <Label>Descrição</Label>
               <Textarea className="mt-1" rows={2} value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} />
             </div>
             <div className="flex gap-3 pt-2">
-              <Button variant="outline" className="flex-1" onClick={() => setShowForm(false)}>Cancel</Button>
+              <Button variant="outline" className="flex-1" onClick={() => setShowForm(false)}>Cancelar</Button>
               <Button className="flex-1" onClick={handleSave} disabled={saving || !form.name}>
-                {saving ? "Saving..." : "Add Source"}
+                {saving ? "Salvando..." : "Adicionar Fonte"}
               </Button>
             </div>
           </div>

@@ -15,10 +15,10 @@ import { cn } from "@/lib/utils";
 
 const navItems = [
   { path: "/", icon: LayoutDashboard, label: "Dashboard" },
-  { path: "/documents", icon: FileText, label: "Documents" },
-  { path: "/sources", icon: Database, label: "Data Sources" },
-  { path: "/ai-query", icon: BrainCircuit, label: "AI Query" },
-  { path: "/logs", icon: ScrollText, label: "Activity Logs" },
+  { path: "/documents", icon: FileText, label: "Documentos" },
+  { path: "/sources", icon: Database, label: "Fontes de Dados" },
+  { path: "/ai-query", icon: BrainCircuit, label: "Consulta IA" },
+  { path: "/logs", icon: ScrollText, label: "Log de Atividades" },
 ];
 
 export default function Layout() {
@@ -49,7 +49,7 @@ export default function Layout() {
           </div>
           <div>
             <p className="font-space font-semibold text-sm text-sidebar-foreground">AntiGravity</p>
-            <p className="text-xs text-sidebar-foreground/50">Research Hub</p>
+            <p className="text-xs text-sidebar-foreground/50">Hub de Pesquisa</p>
           </div>
           <button
             className="ml-auto md:hidden text-sidebar-foreground/60 hover:text-sidebar-foreground"
@@ -84,7 +84,7 @@ export default function Layout() {
         </nav>
 
         <div className="px-4 py-4 border-t border-sidebar-border">
-          <p className="text-xs text-sidebar-foreground/30 text-center">v1.0 · Research Platform</p>
+          <p className="text-xs text-sidebar-foreground/30 text-center">v1.0 · Plataforma de Pesquisa</p>
         </div>
       </aside>
 
@@ -97,7 +97,7 @@ export default function Layout() {
           </button>
           <div className="flex items-center gap-2">
             <Atom className="w-4 h-4 text-primary" />
-            <span className="font-space font-semibold text-sm">AntiGravity Hub</span>
+            <span className="font-space font-semibold text-sm">AntiGravity Hub de Pesquisa</span>
           </div>
         </header>
 
