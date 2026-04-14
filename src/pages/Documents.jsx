@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { base44 } from "@/api/base44Client";
-import { Plus, Search, FileText, ExternalLink, Trash2, CheckCircle, XCircle, Clock, Upload, Tag } from "lucide-react";
+import { Plus, Search, FileText, ExternalLink, Trash2, CheckCircle, XCircle, Clock, Upload, Tag, CloudUpload } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import BulkUpload from "@/components/documents/BulkUpload";
 
 const statusConfig = {
   approved: { label: "Approved", icon: CheckCircle, color: "text-emerald-600", bg: "bg-emerald-50" },
@@ -29,6 +30,7 @@ export default function Documents() {
   const [saving, setSaving] = useState(false);
   const [tagInput, setTagInput] = useState("");
   const [uploadingFile, setUploadingFile] = useState(false);
+  const [showBulkUpload, setShowBulkUpload] = useState(false);
 
   const load = async () => {
     const data = await base44.entities.Document.list("-created_date", 100);
@@ -92,9 +94,14 @@ export default function Documents() {
           <h1 className="font-space text-2xl font-bold">Documentos</h1>
           <p className="text-sm text-muted-foreground mt-0.5">Artigos e documentos de pesquisa</p>
         </div>
-        <Button onClick={() => setShowForm(true)} className="gap-2">
-          <Plus className="w-4 h-4" /> Adicionar Documento
-        </Button>
+        <div className="flex gap-2">
+          <Button variant="outline" onClick={() => setShowBulkUpload(true)} className="gap-2">
+            <CloudUpload className="w-4 h-4" /> Upload em Massa
+          </Button>
+          <Button onClick={() => setShowForm(true)} className="gap-2">
+            <Plus className="w-4 h-4" /> Adicionar Documento
+          </Button>
+        </div>
       </div>
 
       {/* Filters */}
@@ -187,6 +194,12 @@ export default function Documents() {
           })}
         </div>
       )}
+
+      <BulkUpload
+        open={showBulkUpload}
+        onClose={() => setShowBulkUpload(false)}
+        onComplete={() => { setShowBulkUpload(false); load(); }}
+      />
 
       {/* Add Document Dialog */}
       <Dialog open={showForm} onOpenChange={setShowForm}>
