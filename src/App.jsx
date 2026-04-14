@@ -9,7 +9,7 @@ import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
 import Documents from './pages/Documents';
 import Sources from './pages/Sources';
-import AIQuery from './pages/AIQuery';
+import AIQuery from './pages/AIQuery.jsx';
 import ActivityLogs from './pages/ActivityLogs';
 
 const AuthenticatedApp = () => {

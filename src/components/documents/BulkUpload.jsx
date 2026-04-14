@@ -61,9 +61,10 @@ export default function BulkUpload({ open, onClose, onComplete }) {
         continue;
       }
 
-      // 2. Extract metadata via LLM
+      // 2. Extract metadata AND full text via LLM
       updateFile(i, { status: "extracting" });
       let metadata = { title: files[i].name.replace(/\.(pdf|doc|docx)$/i, ""), authors: "", abstract: "", published_date: "", source: "" };
+      let full_text_content = "";
       try {
         const extracted = await base44.integrations.Core.ExtractDataFromUploadedFile({
           file_url,
@@ -76,6 +77,7 @@ export default function BulkUpload({ open, onClose, onComplete }) {
               published_date: { type: "string" },
               journal_or_source: { type: "string" },
               keywords: { type: "array", items: { type: "string" } },
+              full_text: { type: "string", description: "All text content from the document" },
             }
           }
         });
@@ -89,6 +91,7 @@ export default function BulkUpload({ open, onClose, onComplete }) {
             source: out.journal_or_source || "",
             tags: out.keywords || [],
           };
+          full_text_content = out.full_text || "";
         }
       } catch {
         // fallback to filename as title, continue
@@ -100,6 +103,7 @@ export default function BulkUpload({ open, onClose, onComplete }) {
         await base44.entities.Document.create({
           ...metadata,
           file_url,
+          full_text_content,
           status: "pending",
         });
         await base44.entities.ActivityLog.create({
