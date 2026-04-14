@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { format } from "date-fns";
 import ReactMarkdown from "react-markdown";
 import { useRAG } from "@/hooks/useRAG.js";
-import FontesSelectorPanel from "@/components/ai/FontesSelectorPanel";
+import FontesSelectorPanel from "@/components/ai/FontesSelectorPanel.jsx";
 
 const SUGGESTED = [
   "Qual é o consenso científico atual sobre pesquisa em antigravidade?",
