@@ -26,6 +26,10 @@
       "type": "string",
       "description": "Abstract or summary"
     },
+    "full_text_content": {
+      "type": "string",
+      "description": "Full extracted text content for RAG"
+    },
     "tags": {
       "type": "array",
       "items": {
